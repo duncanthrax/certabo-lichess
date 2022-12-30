@@ -22,3 +22,4 @@ When powered on with this software running, the board will automatically snap in
   - `lichessName` is your account name on Lichess. It is printed in the upper right corner of the Lichess web interface.
   - `lichessToken` is the API token.
 - When starting for the first time, the board will need to map the RFID codes for the pieces. Place all pieces in standard base setup. Extra queens can optionally go on any square of rows 3+4 for white, and rows 5+6 for black. Once all rows 1+2 and 7+8 are filled, the board will save the RFID mappings and go into game mode. If you ever need to repeat piece mappings, either delete `$HOME/.certabo-lichess` or power on the board with a single piece on square A1.
+- The software is designed to run permanently. It is recommended to run it inside `screen` or `tmux` or similar for that purpose.
