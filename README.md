@@ -34,5 +34,5 @@ When powered on with this software running, the board will automatically snap in
 - Playing en passant works both with and without the taken piece on the board.
 
 ## License / Copyright
-See LICENSE for details. Copyright (c) 2022 Tom Kistner.
+See LICENSE for details. Copyright (c) 2022 Tom Kistner.\
 Contains code inlined from https://github.com/laat/fen-chess-board, copyright (c) 2016 Sigurd Fosseng
