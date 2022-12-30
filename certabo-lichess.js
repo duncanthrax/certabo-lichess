@@ -542,6 +542,9 @@ const Board = {
 
         Board.loadPieces(); // Best effort
 
+        // Dump RFID codes once on startup
+        var dumpedRfid = false;
+
         // Reading - the board sends RFID status automatically in lines
         // starting with ':' and ending with '\n'. In between are 320 (64 * 5)
         // decimal numbers as strings. Each pack of five numbers is an RFID
@@ -563,10 +566,15 @@ const Board = {
             Board.allFields().forEach(field => {
                 Board.clearField('real', field);
                 let rfidId = ''; while (rfidId.length < 10) rfidId += parseInt(numbers.shift()).toString(16).padStart(2,'0');
+                if (!dumpedRfid) {
+                    console.log(`RFID ID on square ${field}: ${rfidId}`);
+                }
                 if (!rfidId.match(rfidIdFilterRx)) return;
                 Board.rfidIds[field] = rfidId == '0000000000' ? false : rfidId.toUpperCase();
                 if (Board.pieces[Board.rfidIds[field]]) Board.putPiece('real', field, Board.pieces[Board.rfidIds[field]])
             });
+
+            dumpedRfid = true;
 
             if (Board.mode == 'detect' && Board.hasRfidPiece('a1b1c1d1e1f1g1h1a2b2c2d2e2f2g2h2a7b7c7d7e7f7g7h7a8b8c8d8e8f8g8h8')) {
                 Board.allFields().forEach(field => {
