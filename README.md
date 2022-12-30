@@ -30,3 +30,9 @@ When powered on with this software running, the board will automatically snap in
 - Resigning a game is implemented by swapping the kings on the board. However, resigning a game on Lichess seems to require Bot API rights in addition to Board API rights. The former can only be enabled on a token if your account has never played a game on Lichess before. So, sadly, you'll need to resign your game on your mobile or computer.
 - The move detection has a 3-second delay to prevent misreadings when "pushing" pieces, accidentially dropping them, or making a general mess on the board. You can tweak that setting with `moveDetectionDelaySeconds` in `certabo-lichess.js`.
 - If you make an illegal move, it will simply not commit. If your move keeps blinking, check the state of your king.
+- For pawn promotion, simply place the desired piece on the target square.
+- Playing en passant works both with and without the taken piece on the board.
+
+## License / Copyright
+See LICENSE for details. Copyright (c) 2022 Tom Kistner.
+Contains code inlined from https://github.com/laat/fen-chess-board, copyright (c) 2016 Sigurd Fosseng
