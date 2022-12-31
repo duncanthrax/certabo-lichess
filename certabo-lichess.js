@@ -306,6 +306,7 @@ const Lch = {
                 }
                 else {
                     Lch.myLastMove = move;
+                    Board.unstageMove();
                 }
             });
         }
@@ -525,6 +526,10 @@ const Board = {
         Board.clearBoard('game');
         Board.clearBoard('real');
         Board.offFields = [];
+    },
+    unstageMove: () => {
+        Board.stagedMove = false;
+        Board.stagedMoveSince = 0;
     },
 
     run: () => {
@@ -772,8 +777,7 @@ const Board = {
                             }
                             else {
                                 // No move detected, unstage previously staged move
-                                Board.stagedMove = false;
-                                Board.stagedMoveSince = 0;
+                                Board.unstageMove();
                             }
                         }
 
